@@ -141,3 +141,11 @@
         @apply bg-background text-foreground;
     }
 }
+
+@layer base {
+    .kiosk-mode {
+        user-select: none; /* Prevent text selection */
+        touch-action: manipulation; /* Prevent double-tap zoom */
+        cursor: none; /* Optional: hide cursor if using a touchscreen */
+    }
+}

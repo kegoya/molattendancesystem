@@ -5,6 +5,8 @@ use Inertia\Inertia;
 use Laravel\Fortify\Features;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
+
 
 Route::get('/', function () {
     return Inertia::render('welcome', [
@@ -20,7 +22,15 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('/shifts/toggle', [ShiftController::class, 'toggle'])->name('shifts.toggle');
+     Route::get('/products', [ProductController::class, 'index'])->name('products');
+      Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+     Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+     //Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+     Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+     Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+Route::post('/shifts/toggle', [ShiftController::class, 'toggle'])->name('shifts.toggle');
     
     Route::post('/shifts', [ShiftController::class, 'store'])->name('shifts.store');
     // Add this line for deleting shifts

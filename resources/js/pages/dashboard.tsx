@@ -37,8 +37,7 @@ export default function Dashboard({ isActive, shifts, stats, chartData }: Dashbo
             <div className="max-w-2xl mx-auto space-y-8">
                 {/* 1. Summary Stats Card */}
                 <ShiftStats stats={stats} />
-                {/* New Visual Data Section */}
-                <WorkChart data={chartData} />
+                
 
                 {/* 2. Main Action Control */}
                 <ClockInOut isActive={isActive} />
