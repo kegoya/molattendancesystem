@@ -15,7 +15,7 @@ import { send } from '@/routes/verification';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Profile settings',
+        title: 'Your Profile settings',
         href: edit().url,
     },
 ];

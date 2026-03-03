@@ -20,7 +20,7 @@ import {
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Procucts',
+        title: 'Manage Products',
         href: products().url,
     },
 ];
@@ -49,9 +49,9 @@ export default function Index() {
     
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Products" />
+            <Head title="Manage Products" />
             <div className='m-4'>
-               <Link href={create().url}><Button> Create a Product</Button></Link>
+               <Link href={create().url}><Button> Add a Product</Button></Link>
             </div>
             <div className='m-4'>
                 <div >
@@ -71,11 +71,13 @@ export default function Index() {
             <Table>
                 <TableCaption>A list of your recent products.</TableCaption>
                 <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-25">ID</TableHead>
+                  <TableRow >
+                    <TableHead className="w-25">#</TableHead>
                     <TableHead>Product Name</TableHead>
-                    <TableHead>Category</TableHead>
+                    <TableHead>Description</TableHead>
                     <TableHead>Price</TableHead>
+                    <TableHead>Featured Image</TableHead>
+                    <TableHead>Created Date</TableHead>
                     <TableHead className="text-center">Action</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -86,6 +88,8 @@ export default function Index() {
                     <TableCell>{product.name}</TableCell>
                     <TableCell>{product.description}</TableCell>
                     <TableCell className="text-center">${product.price}</TableCell>
+                    <TableCell className="text-center">{product.featured_image}</TableCell>
+                    <TableCell className="text-center">{product.created_at}</TableCell>
                     <TableCell className="text-center">
                         <Link href={route('products.edit', { product: product.id })}><Button variant="outline" size="sm" className='bg-slate-500 hover:bg-slate-700 text-white'>Edit</Button></Link>
                         <Button disabled={processing} onClick={() => handleDelete(product.id,product.name)} variant="outline" size="sm" className="ml-2 bg-red-500 hover:bg-red-700 text-white">Delete</Button>
